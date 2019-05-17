@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "angular-google-tag-manager": [
+        "dist/angular-google-tag-manager"
+      ],
+      "angular-google-tag-manager/*": [
+        "dist/angular-google-tag-manager/*"
+      ]
+    }
   }
 }
