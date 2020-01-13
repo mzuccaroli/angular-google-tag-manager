@@ -13,6 +13,14 @@ After installing it you need to provide your GTM id in app.module.ts
         {provide: 'googleTagManagerId',  useValue: YOUR_GTM_ID}
     ],
 ```
+inject the gtmService in your controller
+
+```
+constructor(
+        ...
+        private gtmService: GoogleTagManagerService,
+    ) { }
+```
 
 then you can start pushing events on your gtm
 
@@ -39,7 +47,7 @@ if you want to recive tags without pushing events simply call the function to en
 In your Angular project run
 
 ```
-npm i -save  angular-google-tag-manager
+npm i --save  angular-google-tag-manager
 ```
 
 ## Authors
