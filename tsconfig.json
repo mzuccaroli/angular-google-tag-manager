@@ -21,10 +21,10 @@
     ],
     "paths": {
       "angular-google-tag-manager": [
-        "dist/angular-google-tag-manager"
+        "demo-application/node_modules/angular-google-tag-manager"
       ],
       "angular-google-tag-manager/*": [
-        "dist/angular-google-tag-manager/*"
+        "demo-application/node_modules/angular-google-tag-manager/*"
       ]
     }
   }
