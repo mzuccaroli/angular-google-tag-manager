@@ -1,6 +1,6 @@
 {
   "name": "angular-google-tag-manager",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -12,10 +12,7 @@
     "Marco Zuccaroli <marcozuccaroli@gmail.com>"
   ],
   "peerDependencies": {
-    "@angular/common": "^7.2.0",
-    "@angular/core": "^7.2.0"
-  },
-  "dependencies": {
-    "browser-globals": "0.0.2"
+    "@angular/common": "^8.2",
+    "@angular/core": "^8.2"
   }
 }
