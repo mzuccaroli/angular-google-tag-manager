@@ -1,5 +1,4 @@
-import {Inject, Injectable} from '@angular/core';
-import {BrowserGlobalsService} from 'browser-globals';
+import { Inject, Injectable } from '@angular/core';
 
 @Injectable({
     providedIn: 'root'
@@ -9,8 +8,17 @@ export class GoogleTagManagerService {
     private isLoaded = false;
     private gtmId: string;
 
+    private browserGlobals = {
+        windowRef(): any {
+            return window;
+        },
+        documentRef(): any {
+            return document;
+        }
+    };
+
     constructor(
-        private browserGlobals: BrowserGlobalsService,
+        // private browserGlobals: BrowserGlobalsService,
         @Inject('googleTagManagerId') public googleTagManagerId: string,
     ) {
         this.gtmId = googleTagManagerId;
