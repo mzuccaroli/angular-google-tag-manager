@@ -2,6 +2,7 @@
 
 A service library for integrate google tag manager in your angular project
 This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
+For more info see this [how to install google tag manager article](https://itnext.io/how-to-add-google-tag-manager-to-an-angular-application-fc68624386e2) 
 
 ## Getting Started
 
@@ -62,4 +63,4 @@ This project is licensed under the MIT License
 
 ## Acknowledgments
 
-* Thanks to [PurpleBooth](https://github.com/PurpleBooth) for the [Readme Template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) 
+* Thanks to PurpleBooth for the [Readme Template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) 
