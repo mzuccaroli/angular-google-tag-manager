@@ -51,6 +51,18 @@ In your Angular project run
 npm i --save  angular-google-tag-manager
 ```
 
+### Custom configuration and GTM environments
+You can pass *gtm_preview* and *gtm_auth* optional variables to your GTM by providing them in app.module.ts 
+
+```
+    providers: [
+        ...
+        {provide: 'googleTagManagerId',  useValue: YOUR_GTM_ID},
+        {provide: 'googleTagManagerAuth',  useValue: YOUR_GTM_AUTH},
+        {provide: 'googleTagManagerPreview',  useValue: YOUR_GTM_ENV}
+    ],
+```
+
 ## Authors
 
 * **Marco Zuccaroli** - *Initial work* - [Marco Zuccaroli](https://github.com/mzuccaroli)
