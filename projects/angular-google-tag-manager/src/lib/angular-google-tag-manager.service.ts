@@ -19,14 +19,9 @@ export class GoogleTagManagerService {
     };
 
     constructor(
-        // private browserGlobals: BrowserGlobalsService,
         @Inject('googleTagManagerId') public googleTagManagerId: string,
-        @Optional()
-        @Inject('googleTagManagerAuth')
-        public googleTagManagerAuth: string,
-        @Optional()
-        @Inject('googleTagManagerPreview')
-        public googleTagManagerPreview: string
+        @Optional() @Inject('googleTagManagerAuth') public googleTagManagerAuth: string,
+        @Optional() @Inject('googleTagManagerPreview') public googleTagManagerPreview: string
     ) {
         this.gtmId = googleTagManagerId;
         this.gtmAuth = googleTagManagerAuth;
