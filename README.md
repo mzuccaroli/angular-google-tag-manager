@@ -67,7 +67,7 @@ You can pass *gtm_preview* and *gtm_auth* optional variables to your GTM by prov
 
 * **Marco Zuccaroli** - *Initial work* - [Marco Zuccaroli](https://github.com/mzuccaroli)
 
-See also the list of [contributors](https://github.com/mzuccaroli/angular-browser-globals/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/mzuccaroli/angular-google-tag-manager/graphs/contributors) who participated in this project.
 
 ## License
 
