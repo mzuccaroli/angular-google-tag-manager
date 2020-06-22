@@ -40,6 +40,9 @@ export class GoogleTagManagerService {
     }
 
     public addGtmToDom() {
+        if (this.isLoaded) {
+            return;
+        }
         const doc = this.browserGlobals.documentRef();
         this.pushOnDataLayer({
             'gtm.start': new Date().getTime(),
