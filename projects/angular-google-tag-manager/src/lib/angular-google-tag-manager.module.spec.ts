@@ -23,7 +23,7 @@ describe('GoogleTagManagerModule', () => {
     ));
   });
 
-  fdescribe('with other options configured', () => {
+  describe('with other options configured', () => {
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [
