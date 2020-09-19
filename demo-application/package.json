@@ -17,7 +17,7 @@
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
-    "angular-google-tag-manager": "^1.1.0",
+    "angular-google-tag-manager": "1.1.4",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.4",
     "tslib": "^1.9.0",
