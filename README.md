@@ -1,7 +1,7 @@
 # Angular Google Tag Manager Service
 
 A service library for integrate google tag manager in your angular project
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
+This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version
 For more info see this [how to install google tag manager article](https://itnext.io/how-to-add-google-tag-manager-to-an-angular-application-fc68624386e2) 
 
 ## Getting Started
