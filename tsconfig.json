@@ -2,29 +2,23 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "downlevelIteration": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
+    "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "module": "es2020",
     "lib": [
       "es2018",
       "dom"
     ],
     "paths": {
       "angular-google-tag-manager": [
-        "demo-application/node_modules/angular-google-tag-manager"
-      ],
-      "angular-google-tag-manager/*": [
-        "demo-application/node_modules/angular-google-tag-manager/*"
+        "dist/angular-google-tag-manager/angular-google-tag-manager",
+        "dist/angular-google-tag-manager"
       ]
     }
   }

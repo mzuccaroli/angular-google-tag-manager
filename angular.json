@@ -4,16 +4,21 @@
   "newProjectRoot": "projects",
   "projects": {
     "angular-google-tag-manager": {
+      "projectType": "library",
       "root": "projects/angular-google-tag-manager",
       "sourceRoot": "projects/angular-google-tag-manager/src",
-      "projectType": "library",
-      "prefix": "agtm",
+      "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/angular-google-tag-manager/tsconfig.lib.json",
             "project": "projects/angular-google-tag-manager/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/angular-google-tag-manager/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -37,7 +42,6 @@
           }
         }
       }
-    }
-  },
+    }},
   "defaultProject": "angular-google-tag-manager"
 }
