@@ -29,7 +29,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    { provide: 'googleTagManagerId', useValue: 'GTM-W3T4HRL' }
+    { provide: 'googleTagManagerId', useValue: 'GTM-PV8586C' }
   ],
   bootstrap: [AppComponent]
 })
