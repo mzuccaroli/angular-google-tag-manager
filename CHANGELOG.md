@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.2.0] - 2020‑09‑20
 
 ### Added
+- for root support
+### Changed
+### Removed
+
+## [1.2.0] - 2020‑09‑20
+
+### Added
 ### Changed
 - update to angular 10
 ### Removed
