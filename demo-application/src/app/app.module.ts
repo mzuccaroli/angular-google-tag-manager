@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { Page1Component } from './page1/page1.component';
 import { Page2Component } from './page2/page2.component';
-
+import { GoogleTagManagerModule } from 'angular-google-tag-manager';
 
 const routes: Routes = [
   {
@@ -26,11 +26,17 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    GoogleTagManagerModule.forRoot({
+      id: 'GTM-PV8586C',
+      // gtm_auth: YOUR_GTM_AUTH,
+      // gtm_preview: YOUR_GTM_ENV
+    })
   ],
-  providers: [
-    { provide: 'googleTagManagerId', useValue: 'GTM-PV8586C' }
-  ],
+  // OLD PROVIDER VERSION
+  // providers: [
+  //   { provide: 'googleTagManagerId', useValue: 'GTM-PV8586C' }
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
