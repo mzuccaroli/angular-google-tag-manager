@@ -1,6 +1,6 @@
 export interface GoogleTagManagerConfig {
-  id: string;
+  id: string | null;
   gtm_auth?: string;
   gtm_preview?: string;
-  [key: string]: string;
+  [key: string]: string | null | undefined;
 }

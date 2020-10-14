@@ -46,6 +46,7 @@
         ]
       }
     ],
+    "no-any": true,
     "no-consecutive-blank-lines": false,
     "no-console": [
       true,
