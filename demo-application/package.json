@@ -1,6 +1,6 @@
 {
   "name": "demo-application",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -17,7 +17,7 @@
     "@angular/platform-browser": "~10.1.2",
     "@angular/platform-browser-dynamic": "~10.1.2",
     "@angular/router": "~10.1.2",
-    "angular-google-tag-manager": "^1.2.0",
+    "angular-google-tag-manager": "^1.2.2",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
