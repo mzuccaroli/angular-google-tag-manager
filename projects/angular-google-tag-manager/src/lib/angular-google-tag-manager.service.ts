@@ -68,14 +68,14 @@ export class GoogleTagManagerService {
     gtmScript.id = 'GTMscript';
     gtmScript.async = true;
     gtmScript.src = this.applyGtmQueryParams(
-      '//www.googletagmanager.com/gtm.js'
+      'https://www.googletagmanager.com/gtm.js'
     );
     doc.head.insertBefore(gtmScript, doc.head.firstChild);
 
     const ifrm = doc.createElement('iframe');
     ifrm.setAttribute(
       'src',
-      this.applyGtmQueryParams('//www.googletagmanager.com/ns.html')
+      this.applyGtmQueryParams('https://www.googletagmanager.com/ns.html')
     );
     ifrm.style.width = '0';
     ifrm.style.height = '0';
