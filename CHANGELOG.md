@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.2.3] - 2020‑10‑27
+
+### Added
+### Changed
+- force use of https for google scripts
+### Removed
+
 ## [1.2.2] - 2020‑09‑20
 
 ### Added
