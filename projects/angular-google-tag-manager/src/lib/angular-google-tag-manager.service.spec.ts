@@ -49,10 +49,10 @@ describe('GoogleTagManagerService', () => {
       service.pushTag(testobject);
       const iframe = document.querySelector('body > noscript > iframe');
       expect(iframe).toBeTruthy();
-      expect(iframe.getAttribute('src')).toContain('//www.googletagmanager.com/ns.html?id=');
+      expect(iframe.getAttribute('src')).toContain('https://www.googletagmanager.com/ns.html?id=');
       const script = document.querySelector('#GTMscript');
       expect(script).toBeTruthy();
-      expect(script.getAttribute('src')).toContain('//www.googletagmanager.com/gtm.js?id=');
+      expect(script.getAttribute('src')).toContain('https://www.googletagmanager.com/gtm.js?id=');
     }));
 
   it('should be able to initialize the datalayer with some defaults values of a page',
