@@ -4,3 +4,9 @@ export interface GoogleTagManagerConfig {
   gtm_preview?: string;
   [key: string]: string | null | undefined;
 }
+
+declare global {
+  interface Window {
+    dataLayer: any[] | null;
+  }
+}
