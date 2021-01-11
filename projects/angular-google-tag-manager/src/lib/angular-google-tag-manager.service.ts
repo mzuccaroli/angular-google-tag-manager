@@ -35,54 +35,66 @@ export class GoogleTagManagerService {
     this.config = {
       ...this.config,
       id: googleTagManagerId || this.config.id,
-      gtm_auth: googleTagManagerAuth || this.config['gtm_auth'],
-      gtm_preview: googleTagManagerPreview || this.config['gtm_preview'],
+      gtm_auth: googleTagManagerAuth || this.config.gtm_auth,
+      gtm_preview: googleTagManagerPreview || this.config.gtm_preview,
     };
     if (this.config.id == null) {
       throw new Error('Google tag manager ID not provided.');
     }
   }
 
-  public getDataLayer() {
+  public getDataLayer(): any[] {
     const window = this.browserGlobals.windowRef();
-    window['dataLayer'] = window['dataLayer'] || [];
-    return window['dataLayer'];
+    window.dataLayer = window.dataLayer || [];
+    return window.dataLayer;
   }
 
-  private pushOnDataLayer(obj: object) {
+  private pushOnDataLayer(obj: object): void {
     const dataLayer = this.getDataLayer();
     dataLayer.push(obj);
   }
 
-  public addGtmToDom() {
-    if (this.isLoaded) {
-      return;
-    }
-    const doc = this.browserGlobals.documentRef();
-    this.pushOnDataLayer({
-      'gtm.start': new Date().getTime(),
-      event: 'gtm.js',
+  public addGtmToDom(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      if (this.isLoaded) {
+        return resolve(this.isLoaded);
+      }
+      const doc = this.browserGlobals.documentRef();
+      this.pushOnDataLayer({
+        'gtm.start': new Date().getTime(),
+        event: 'gtm.js',
+      });
+
+      const gtmScript = doc.createElement('script');
+      gtmScript.id = 'GTMscript';
+      gtmScript.async = true;
+      gtmScript.src = this.applyGtmQueryParams(
+        'https://www.googletagmanager.com/gtm.js'
+      );
+      gtmScript.addEventListener('load', () => {
+        return resolve(this.isLoaded = true);
+      });
+      gtmScript.addEventListener('error', () => {
+        return reject(false);
+      });
+      doc.head.insertBefore(gtmScript, doc.head.firstChild);
     });
-
-    const gtmScript = doc.createElement('script');
-    gtmScript.id = 'GTMscript';
-    gtmScript.async = true;
-    gtmScript.src = this.applyGtmQueryParams(
-      'https://www.googletagmanager.com/gtm.js'
-    );
-    doc.head.insertBefore(gtmScript, doc.head.firstChild);
-
-    this.isLoaded = true;
   }
 
-  public pushTag(item: object) {
-    if (!this.isLoaded) {
-      this.addGtmToDom();
-    }
-    this.pushOnDataLayer(item);
+  public pushTag(item: object): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      if (!this.isLoaded) {
+        this.addGtmToDom().then(() => {
+          this.pushOnDataLayer(item);
+          return resolve();
+        }).catch(() => reject());
+      }
+      this.pushOnDataLayer(item);
+      return resolve();
+    });
   }
 
-  private applyGtmQueryParams(url: string) {
+  private applyGtmQueryParams(url: string): string {
     if (url.indexOf('?') === -1) {
       url += '?';
     }
