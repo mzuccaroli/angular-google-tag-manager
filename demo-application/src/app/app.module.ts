@@ -26,7 +26,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
     GoogleTagManagerModule.forRoot({
       id: 'GTM-PV8586C',
       // gtm_auth: YOUR_GTM_AUTH,
