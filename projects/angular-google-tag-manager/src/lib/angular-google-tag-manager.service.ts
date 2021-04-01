@@ -88,9 +88,10 @@ export class GoogleTagManagerService {
           this.pushOnDataLayer(item);
           return resolve();
         }).catch(() => reject());
+      } else {
+        this.pushOnDataLayer(item);
+        return resolve();
       }
-      this.pushOnDataLayer(item);
-      return resolve();
     });
   }
 
