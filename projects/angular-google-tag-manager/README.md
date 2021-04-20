@@ -75,7 +75,8 @@ You can pass _gtm_preview_ and _gtm_auth_ optional variables to your GTM by prov
         ...
         {provide: 'googleTagManagerId',  useValue: YOUR_GTM_ID},
         {provide: 'googleTagManagerAuth',  useValue: YOUR_GTM_AUTH},
-        {provide: 'googleTagManagerPreview',  useValue: YOUR_GTM_ENV}
+        {provide: 'googleTagManagerPreview',  useValue: YOUR_GTM_ENV},
+        {provide: 'googleTagManagerResourcePath',  useValue: YOUR_GTM_RESOURCE_PATH}
     ],
 ```
 
@@ -89,7 +90,8 @@ imports: [
     GoogleTagManagerModule.forRoot({
       id: YOUR_GTM_ID,
       gtm_auth: YOUR_GTM_AUTH,
-      gtm_preview: YOUR_GTM_ENV
+      gtm_preview: YOUR_GTM_ENV,
+      gtm_resource_path: YOUR_GTM_RESOURCE_PATH
     })
 ]
 ```
