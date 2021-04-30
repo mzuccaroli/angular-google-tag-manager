@@ -70,6 +70,9 @@ npm i --save  angular-google-tag-manager
 
 You can pass _gtm_preview_ and _gtm_auth_ optional variables to your GTM by providing them in app.module.ts
 
+In case you'll need to fetch your gtm.js resource trough a first party proxy ( so to bypass any ad-blocker interference in on the client browser ) you can use the _gtm_resource_path_ parameter.
+In that case the resource will be fetched from the specified path instead that from 'https://www.googletagmanager.com/gtm.js' (all of the other queryparams will be mantained)
+
 ```
     providers: [
         ...
