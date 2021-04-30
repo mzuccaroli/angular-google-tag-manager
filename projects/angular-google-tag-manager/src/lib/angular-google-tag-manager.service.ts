@@ -26,7 +26,10 @@ export class GoogleTagManagerService {
     public googleTagManagerAuth: string,
     @Optional()
     @Inject('googleTagManagerPreview')
-    public googleTagManagerPreview: string
+    public googleTagManagerPreview: string,
+    @Optional()
+    @Inject('googleTagManagerResourcePath')
+    public googleTagManagerResourcePath: string
   ) {
     if (this.config == null) {
       this.config = { id: null };
@@ -37,6 +40,7 @@ export class GoogleTagManagerService {
       id: googleTagManagerId || this.config.id,
       gtm_auth: googleTagManagerAuth || this.config.gtm_auth,
       gtm_preview: googleTagManagerPreview || this.config.gtm_preview,
+      gtm_resource_path: googleTagManagerResourcePath || this.config.gtm_resource_path
     };
     if (this.config.id == null) {
       throw new Error('Google tag manager ID not provided.');
@@ -69,7 +73,7 @@ export class GoogleTagManagerService {
       gtmScript.id = 'GTMscript';
       gtmScript.async = true;
       gtmScript.src = this.applyGtmQueryParams(
-        'https://www.googletagmanager.com/gtm.js'
+        this.config.gtm_resource_path ? this.config.gtm_resource_path : 'https://www.googletagmanager.com/gtm.js'
       );
       gtmScript.addEventListener('load', () => {
         return resolve(this.isLoaded = true);
