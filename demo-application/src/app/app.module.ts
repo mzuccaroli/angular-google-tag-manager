@@ -33,10 +33,11 @@ const routes: Routes = [
       // gtm_preview: YOUR_GTM_ENV
     })
   ],
-  // OLD PROVIDER VERSION
-  // providers: [
-  //   { provide: 'googleTagManagerId', useValue: 'GTM-PV8586C' }
-  // ],
+  providers: [
+    { provide: 'googleTagManagerCSPNonce', useValue: 'CSP-NONCE' },
+    // OLD PROVIDER VERSION
+    // { provide: 'googleTagManagerId', useValue: 'GTM-PV8586C' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
