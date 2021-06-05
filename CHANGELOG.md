@@ -5,11 +5,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [1.4.0] - 2021-06-04
+## [1.4.1] - 2021-06-05
 
 ### Added
 ### Changed
+- Typo fix
+### Removed
+
+## [1.4.0] - 2021-06-04
+
+### Added
 - Angular 12 support
+### Changed
 ### Removed
 
 ## [1.3.2] - 2021-04-30
