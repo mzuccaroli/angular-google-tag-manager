@@ -29,7 +29,10 @@ export class GoogleTagManagerService {
     public googleTagManagerPreview: string,
     @Optional()
     @Inject('googleTagManagerResourcePath')
-    public googleTagManagerResourcePath: string
+    public googleTagManagerResourcePath: string,
+    @Optional()
+    @Inject('googleTagManagerCSPNonce')
+    public googleTagManagerCSPNonce: string
   ) {
     if (this.config == null) {
       this.config = { id: null };
@@ -81,6 +84,9 @@ export class GoogleTagManagerService {
       gtmScript.addEventListener('error', () => {
         return reject(false);
       });
+      if (this.googleTagManagerCSPNonce) {
+        gtmScript.setAttribute('nonce', this.googleTagManagerCSPNonce);
+      }
       doc.head.insertBefore(gtmScript, doc.head.firstChild);
     });
   }
