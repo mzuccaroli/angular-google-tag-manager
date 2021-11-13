@@ -28,18 +28,6 @@
             "tsConfig": "projects/angular-google-tag-manager/tsconfig.spec.json",
             "karmaConfig": "projects/angular-google-tag-manager/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/angular-google-tag-manager/tsconfig.lib.json",
-              "projects/angular-google-tag-manager/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     }},

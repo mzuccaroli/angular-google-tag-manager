@@ -3,8 +3,5 @@
   "dest": "../../dist/angular-google-tag-manager",
   "lib": {
     "entryFile": "src/public-api.ts"
-  },
-  "whitelistedNonPeerDependencies": [
-    "browser-globals"
-  ]
+  }
 }
