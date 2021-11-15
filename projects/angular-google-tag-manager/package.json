@@ -1,6 +1,6 @@
 {
   "name": "angular-google-tag-manager",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
     "LE LAY Olivier <https://github.com/liollury>"
   ],
   "peerDependencies": {
-    "@angular/common": "^12.0.3",
-    "@angular/core": "^12.0.3"
+    "@angular/common": "~13.0.1",
+    "@angular/compiler": "~13.0.1"
   }
 }
