@@ -7,6 +7,8 @@ import { GoogleTagManagerConfig } from './google-tag-manager-config';
 export class GoogleTagManagerService {
   private isLoaded = false;
 
+  private isLoading = false;
+
   private browserGlobals = {
     windowRef(): any {
       return window;
@@ -66,28 +68,40 @@ export class GoogleTagManagerService {
       if (this.isLoaded) {
         return resolve(this.isLoaded);
       }
-      const doc = this.browserGlobals.documentRef();
-      this.pushOnDataLayer({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js',
-      });
 
-      const gtmScript = doc.createElement('script');
-      gtmScript.id = 'GTMscript';
-      gtmScript.async = true;
-      gtmScript.src = this.applyGtmQueryParams(
-        this.config.gtm_resource_path ? this.config.gtm_resource_path : 'https://www.googletagmanager.com/gtm.js'
-      );
-      gtmScript.addEventListener('load', () => {
-        return resolve(this.isLoaded = true);
-      });
-      gtmScript.addEventListener('error', () => {
-        return reject(false);
-      });
-      if (this.googleTagManagerCSPNonce) {
-        gtmScript.setAttribute('nonce', this.googleTagManagerCSPNonce);
-      }
-      doc.head.insertBefore(gtmScript, doc.head.firstChild);
+      if (this.isLoading) {
+        const waiter = setInterval(() => {
+          if (!this.isLoading) {
+            clearInterval(waiter);
+            return resolve(this.isLoaded);
+          }
+        }, 20);
+      } else {
+        this.isLoading = true;
+        const doc = this.browserGlobals.documentRef();
+        this.pushOnDataLayer({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js',
+        });
+
+        const gtmScript = doc.createElement('script');
+        gtmScript.id = 'GTMscript';
+        gtmScript.async = true;
+        gtmScript.src = this.applyGtmQueryParams(
+          this.config.gtm_resource_path ? this.config.gtm_resource_path : 'https://www.googletagmanager.com/gtm.js'
+        );
+        gtmScript.addEventListener('load', () => {
+          this.isLoading = false;
+          return resolve(this.isLoaded = true);
+        });
+        gtmScript.addEventListener('error', () => {
+          return reject(false);
+        });
+        if (this.googleTagManagerCSPNonce) {
+          gtmScript.setAttribute('nonce', this.googleTagManagerCSPNonce);
+        }
+        doc.head.insertBefore(gtmScript, doc.head.firstChild);
+      }      
     });
   }
 
