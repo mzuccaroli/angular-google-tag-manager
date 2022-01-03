@@ -5,7 +5,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [1.4.3] - 2021-06-04
+## [1.5.0] - 2022-01-03
+
+### Added
+### Changed
+- Updated all dependencies to latest version, or close to latest
+- Replaced tilde versioning with hat versioning (Tilde versioning of Angular is too strict #108)
+- Exceptions to the above: zone.js still in version 0.x and typescript is a special case for the Angular compiler
+- Removed tslint, as it no longer has any effect: executing npm run lint would state there was no linter installed
+- Removed tsickle and the closure compiler option, as they do not support any Typescript above 4.3
+- Updated build:prod script for Angular 13 standards
+### Removed
+
+## [1.4.4] - 2021-11-15
+
+### Added
+### Changed
+- package.json fix
+### Removed
+
+## [1.4.3] - 2021-11-13
 
 ### Added
 - Angular 13 support
