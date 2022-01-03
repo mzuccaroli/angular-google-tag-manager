@@ -1,6 +1,6 @@
 {
   "name": "angular-google-tag-manager",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -16,13 +16,14 @@
     "Michael Doyle <michael@thehypometer.com>",
     "Mathieu Maes <mathieu@webberig.be>",
     "Stefano Cestari <https://github.com/stefanocestari>",
-    "LE LAY Olivier <https://github.com/liollury>"
+    "LE LAY Olivier <https://github.com/liollury>",
+    "Antoine Bursaux <https://github.com/bursauxa>"
   ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --configuration prod",
+    "build:prod": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint"
   },
