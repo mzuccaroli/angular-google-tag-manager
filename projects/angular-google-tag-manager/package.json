@@ -1,6 +1,6 @@
 {
   "name": "angular-google-tag-manager",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -16,10 +16,11 @@
     "Michael Doyle <michael@thehypometer.com>",
     "Mathieu Maes <mathieu@webberig.be>",
     "Stefano Cestari <https://github.com/stefanocestari>",
-    "LE LAY Olivier <https://github.com/liollury>"
+    "LE LAY Olivier <https://github.com/liollury>",
+    "Antoine Bursaux <https://github.com/bursauxa>"
   ],
   "peerDependencies": {
-    "@angular/common": "~13.0.1",
-    "@angular/compiler": "~13.0.1"
+    "@angular/common": "^13.1.1",
+    "@angular/compiler": "^13.1.1"
   }
 }
