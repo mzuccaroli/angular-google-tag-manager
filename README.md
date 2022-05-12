@@ -28,6 +28,36 @@ imports: [
 ]
 ```
 
+Or use the `APP_INITIALIZER`
+
+```
+import { GoogleTagManagerConfiguration } from 'angular-google-tag-manager-config.service';
+
+imports: [
+    ...
+    GoogleTagManagerModule.forRoot()
+]
+
+providers: [
+    {
+      ...
+      provide: APP_INITIALIZER,
+      useFactory: configInitializer,
+      deps: [
+        HttpBackend,
+        GoogleTagManagerConfiguration,
+      ],
+      multi: true,
+    },
+  ],
+```
+
+set the config in the method assigned to useFactory
+
+```
+googleTagManagerConfiguration.set(googleTagManagerConfiguration);
+```
+
 inject the gtmService in your controller
 
 ```
@@ -70,14 +100,16 @@ npm i --save  angular-google-tag-manager
 
 You can pass _gtm_preview_ and _gtm_auth_ optional variables to your GTM by providing them in app.module.ts
 
+In case you'll need to fetch your gtm.js resource trough a first party proxy ( so to bypass any ad-blocker interference in on the client browser ) you can use the _gtm_resource_path_ parameter.
+In that case the resource will be fetched from the specified path instead that from 'https://www.googletagmanager.com/gtm.js' (all of the other queryparams will be mantained)
+
 ```
     providers: [
         ...
         {provide: 'googleTagManagerId',  useValue: YOUR_GTM_ID},
         {provide: 'googleTagManagerAuth',  useValue: YOUR_GTM_AUTH},
         {provide: 'googleTagManagerPreview',  useValue: YOUR_GTM_ENV},
-        {provide: 'googleTagManagerResourcePath',  useValue: YOUR_GTM_RESOURCE_PATH},
-        {provide: 'googleTagManagerCSPNonce',  useValue: YOUR_CSP_NONCE}
+        {provide: 'googleTagManagerResourcePath',  useValue: YOUR_GTM_RESOURCE_PATH}
     ],
 ```
 
@@ -91,7 +123,8 @@ imports: [
     GoogleTagManagerModule.forRoot({
       id: YOUR_GTM_ID,
       gtm_auth: YOUR_GTM_AUTH,
-      gtm_preview: YOUR_GTM_ENV
+      gtm_preview: YOUR_GTM_ENV,
+      gtm_resource_path: YOUR_GTM_RESOURCE_PATH
     })
 ]
 ```

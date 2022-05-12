@@ -1,5 +1,5 @@
 import { Inject, Injectable, Optional } from '@angular/core';
-import { GoogleTagManagerConfig } from './google-tag-manager-config';
+import { GoogleTagManagerConfiguration } from './angular-google-tag-manager-config.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +18,8 @@ export class GoogleTagManagerService {
 
   constructor(
     @Optional()
-    @Inject('googleTagManagerConfig')
-    public config: GoogleTagManagerConfig = { id: null },
+    @Inject(GoogleTagManagerConfiguration)
+    public googleTagManagerConfiguration: GoogleTagManagerConfiguration,
     @Optional() @Inject('googleTagManagerId') public googleTagManagerId: string,
     @Optional()
     @Inject('googleTagManagerAuth')
@@ -34,18 +34,20 @@ export class GoogleTagManagerService {
     @Inject('googleTagManagerCSPNonce')
     public googleTagManagerCSPNonce: string
   ) {
-    if (this.config == null) {
-      this.config = { id: null };
+    let config = this.googleTagManagerConfiguration?.get();
+    if (config == null) {
+      config = { id: null };
     }
 
-    this.config = {
-      ...this.config,
-      id: googleTagManagerId || this.config.id,
-      gtm_auth: googleTagManagerAuth || this.config.gtm_auth,
-      gtm_preview: googleTagManagerPreview || this.config.gtm_preview,
-      gtm_resource_path: googleTagManagerResourcePath || this.config.gtm_resource_path
+    config = {
+      ...config,
+      id: googleTagManagerId || config.id,
+      gtm_auth: googleTagManagerAuth || config.gtm_auth,
+      gtm_preview: googleTagManagerPreview || config.gtm_preview,
+      gtm_resource_path:
+        googleTagManagerResourcePath || config.gtm_resource_path,
     };
-    if (this.config.id == null) {
+    if (config.id == null) {
       throw new Error('Google tag manager ID not provided.');
     }
   }
@@ -72,14 +74,18 @@ export class GoogleTagManagerService {
         event: 'gtm.js',
       });
 
+      const config = this.googleTagManagerConfiguration.get();
+
       const gtmScript = doc.createElement('script');
       gtmScript.id = 'GTMscript';
       gtmScript.async = true;
       gtmScript.src = this.applyGtmQueryParams(
-        this.config.gtm_resource_path ? this.config.gtm_resource_path : 'https://www.googletagmanager.com/gtm.js'
+        config.gtm_resource_path
+          ? config.gtm_resource_path
+          : 'https://www.googletagmanager.com/gtm.js'
       );
       gtmScript.addEventListener('load', () => {
-        return resolve(this.isLoaded = true);
+        return resolve((this.isLoaded = true));
       });
       gtmScript.addEventListener('error', () => {
         return reject(false);
@@ -94,10 +100,12 @@ export class GoogleTagManagerService {
   public pushTag(item: object): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       if (!this.isLoaded) {
-        this.addGtmToDom().then(() => {
-          this.pushOnDataLayer(item);
-          return resolve();
-        }).catch(() => reject());
+        this.addGtmToDom()
+          .then(() => {
+            this.pushOnDataLayer(item);
+            return resolve();
+          })
+          .catch(() => reject());
       } else {
         this.pushOnDataLayer(item);
         return resolve();
@@ -106,15 +114,16 @@ export class GoogleTagManagerService {
   }
 
   private applyGtmQueryParams(url: string): string {
+    const config = this.googleTagManagerConfiguration.get();
     if (url.indexOf('?') === -1) {
       url += '?';
     }
 
     return (
       url +
-      Object.keys(this.config)
-        .filter((k) => this.config[k])
-        .map((k) => `${k}=${this.config[k]}`)
+      Object.keys(config)
+        .filter((k) => config[k])
+        .map((k) => `${k}=${config[k]}`)
         .join('&')
     );
   }
