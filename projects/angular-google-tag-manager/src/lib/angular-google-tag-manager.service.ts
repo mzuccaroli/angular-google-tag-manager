@@ -36,10 +36,10 @@ export class GoogleTagManagerService {
     @Inject('googleTagManagerCSPNonce')
     public googleTagManagerCSPNonce: string
   ) {
+    /* if the config has not been set then .get() will return a 
+       GoogleTagManagerConfig with id set to null
+    */
     this.config = this.googleTagManagerConfiguration?.get();
-    if (this.config == null) {
-      this.config = { id: null };
-    }
 
     this.config = {
       ...this.config,
