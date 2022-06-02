@@ -28,6 +28,36 @@ imports: [
 ]
 ```
 
+Or use the `APP_INITIALIZER`
+
+```
+import { GoogleTagManagerConfiguration } from 'angular-google-tag-manager-config.service';
+
+imports: [
+    ...
+    GoogleTagManagerModule.forRoot()
+]
+
+providers: [
+    {
+      ...
+      provide: APP_INITIALIZER,
+      useFactory: configInitializer,
+      deps: [
+        HttpBackend,
+        GoogleTagManagerConfiguration,
+      ],
+      multi: true,
+    },
+  ],
+```
+
+set the config in the method assigned to useFactory
+
+```
+googleTagManagerConfiguration.set(googleTagManagerConfiguration);
+```
+
 inject the gtmService in your controller
 
 ```

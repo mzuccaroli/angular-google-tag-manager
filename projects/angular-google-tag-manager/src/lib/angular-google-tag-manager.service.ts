@@ -1,4 +1,5 @@
 import { Inject, Injectable, Optional } from '@angular/core';
+import { GoogleTagManagerConfiguration } from './angular-google-tag-manager-config.service';
 import { GoogleTagManagerConfig } from './google-tag-manager-config';
 
 @Injectable({
@@ -6,6 +7,7 @@ import { GoogleTagManagerConfig } from './google-tag-manager-config';
 })
 export class GoogleTagManagerService {
   private isLoaded = false;
+  private config: GoogleTagManagerConfig | null;
 
   private browserGlobals = {
     windowRef(): any {
@@ -18,8 +20,8 @@ export class GoogleTagManagerService {
 
   constructor(
     @Optional()
-    @Inject('googleTagManagerConfig')
-    public config: GoogleTagManagerConfig = { id: null },
+    @Inject(GoogleTagManagerConfiguration)
+    public googleTagManagerConfiguration: GoogleTagManagerConfiguration,
     @Optional() @Inject('googleTagManagerId') public googleTagManagerId: string,
     @Optional()
     @Inject('googleTagManagerAuth')
@@ -34,6 +36,7 @@ export class GoogleTagManagerService {
     @Inject('googleTagManagerCSPNonce')
     public googleTagManagerCSPNonce: string
   ) {
+    this.config = this.googleTagManagerConfiguration?.get();
     if (this.config == null) {
       this.config = { id: null };
     }
@@ -43,7 +46,8 @@ export class GoogleTagManagerService {
       id: googleTagManagerId || this.config.id,
       gtm_auth: googleTagManagerAuth || this.config.gtm_auth,
       gtm_preview: googleTagManagerPreview || this.config.gtm_preview,
-      gtm_resource_path: googleTagManagerResourcePath || this.config.gtm_resource_path
+      gtm_resource_path:
+        googleTagManagerResourcePath || this.config.gtm_resource_path,
     };
     if (this.config.id == null) {
       throw new Error('Google tag manager ID not provided.');
@@ -76,10 +80,12 @@ export class GoogleTagManagerService {
       gtmScript.id = 'GTMscript';
       gtmScript.async = true;
       gtmScript.src = this.applyGtmQueryParams(
-        this.config.gtm_resource_path ? this.config.gtm_resource_path : 'https://www.googletagmanager.com/gtm.js'
+        this.config.gtm_resource_path
+          ? this.config.gtm_resource_path
+          : 'https://www.googletagmanager.com/gtm.js'
       );
       gtmScript.addEventListener('load', () => {
-        return resolve(this.isLoaded = true);
+        return resolve((this.isLoaded = true));
       });
       gtmScript.addEventListener('error', () => {
         return reject(false);
@@ -94,10 +100,12 @@ export class GoogleTagManagerService {
   public pushTag(item: object): Promise<void> {
     return new Promise<void>((resolve, reject) => {
       if (!this.isLoaded) {
-        this.addGtmToDom().then(() => {
-          this.pushOnDataLayer(item);
-          return resolve();
-        }).catch(() => reject());
+        this.addGtmToDom()
+          .then(() => {
+            this.pushOnDataLayer(item);
+            return resolve();
+          })
+          .catch(() => reject());
       } else {
         this.pushOnDataLayer(item);
         return resolve();
