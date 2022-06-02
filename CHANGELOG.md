@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.5.1] - 2022-06-02
+
+### Added
+- use APP_INITIALIZER token to set config dynamically: https://github.com/mzuccaroli/angular-google-tag-manager/issues/135
+### Changed
+- Bump dependencies
+
 ## [1.5.0] - 2022-01-03
 
 ### Added
