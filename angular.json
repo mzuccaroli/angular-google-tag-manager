@@ -30,6 +30,9 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-google-tag-manager"
+    }
+  },
+  "cli": {
+    "analytics": false
+  }
 }
