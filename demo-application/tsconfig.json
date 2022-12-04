@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "ES2022",
     "typeRoots": [
       "node_modules/@types"
     ],
@@ -27,6 +27,7 @@
         "../dist/angular-google-tag-manager"
       ]
     },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

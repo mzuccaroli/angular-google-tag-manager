@@ -26,7 +26,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
+    RouterModule.forRoot(routes),
     GoogleTagManagerModule.forRoot({
       id: 'GTM-PV8586C',
       // gtm_auth: YOUR_GTM_AUTH,
@@ -40,4 +40,4 @@ const routes: Routes = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
