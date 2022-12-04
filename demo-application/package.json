@@ -1,6 +1,6 @@
 {
   "name": "demo-application",
-  "version": "1.5.1",
+  "version": "1.6.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
