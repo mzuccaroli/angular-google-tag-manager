@@ -20,7 +20,7 @@
     "Antoine Bursaux <https://github.com/bursauxa>"
   ],
   "peerDependencies": {
-    "@angular/common": "^14.0.0",
-    "@angular/compiler": "^14.0.0"
+    "@angular/common": "^15.0.0",
+    "@angular/compiler": "^15.0.0"
   }
 }
