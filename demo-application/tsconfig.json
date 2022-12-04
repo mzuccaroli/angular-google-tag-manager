@@ -20,10 +20,16 @@
     ],
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "angular-google-tag-manager": [
+        "../dist/angular-google-tag-manager/angular-google-tag-manager",
+        "../dist/angular-google-tag-manager"
+      ]
+    },
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
     "strictTemplates": true
-  }  
+  }
 }
