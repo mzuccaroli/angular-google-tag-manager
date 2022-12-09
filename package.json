@@ -1,6 +1,6 @@
 {
   "name": "angular-google-tag-manager",
-  "version": "1.6.1",
+  "version": "1.7.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
     "Mathieu Maes <mathieu@webberig.be>",
     "Stefano Cestari <https://github.com/stefanocestari>",
     "LE LAY Olivier <https://github.com/liollury>",
-    "Antoine Bursaux <https://github.com/bursauxa>"
+    "Antoine Bursaux <https://github.com/bursauxa>",
+    "Brandon Largeau <https://github.com/Yberion>"
   ],
   "scripts": {
     "ng": "ng",
