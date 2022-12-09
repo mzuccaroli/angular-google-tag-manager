@@ -30,6 +30,88 @@
           }
         }
       }
+    },
+    "demo-application": {
+      "root": "projects/demo-application",
+      "sourceRoot": "projects/demo-application/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/demo-application",
+            "index": "projects/demo-application/src/index.html",
+            "main": "projects/demo-application/src/main.ts",
+            "polyfills": "projects/demo-application/src/polyfills.ts",
+            "tsConfig": "projects/demo-application/tsconfig.app.json",
+            "assets": [
+              "projects/demo-application/src/favicon.ico",
+              "projects/demo-application/src/assets"
+            ],
+            "styles": [
+              "projects/demo-application/src/styles.scss"
+            ],
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ]
+            }
+          },
+          "defaultConfiguration": ""
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "demo-application:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "demo-application:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/demo-application/tsconfig.app.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
