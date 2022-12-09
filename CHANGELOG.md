@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2022-11-09
+
+### Added
+- Angular 15 support
+### Changed
+- Update to latest Angular 14 packages
+- Update all packages to latest version except: typescript @types/node
+- Update the lib to only support Angular ^15
+- Update the demo app to Angular 15
+  - browserlistrc was removed 
+  - environment files have been deleted 
+  - angular.json was update to reflect that
+- Explicit tslib version in the lib
+- Removed  demo app angular-google-tag-manager from the installed packages, it now use the one built locally 
+- Project structure to only have one package.json
+### Removed
+
 ## [1.6.1] - 2022-07-24
 
 ### Added
