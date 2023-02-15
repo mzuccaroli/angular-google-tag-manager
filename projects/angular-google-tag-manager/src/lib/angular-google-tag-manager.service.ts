@@ -23,6 +23,7 @@ export class GoogleTagManagerService {
     @Inject(GoogleTagManagerConfiguration)
     public googleTagManagerConfiguration: GoogleTagManagerConfiguration,
     @Optional() @Inject('googleTagManagerId') public googleTagManagerId: string,
+    @Optional() @Inject('googleTagManagerMode') public googleTagManagerMode: "silent"|"noisy" = "noisy",
     @Optional()
     @Inject('googleTagManagerAuth')
     public googleTagManagerAuth: string,
@@ -50,17 +51,28 @@ export class GoogleTagManagerService {
         googleTagManagerResourcePath || this.config.gtm_resource_path,
     };
     if (this.config.id == null) {
-      throw new Error('Google tag manager ID not provided.');
+      return;
     }
   }
 
+  private checkForId(): boolean {
+    if( this.googleTagManagerMode !== "silent" && !this.config.id ) {
+      throw new Error('Google tag manager ID not provided.');
+    } else if( !this.config.id ) {
+      return false;
+    }
+    return true;
+  }
+
   public getDataLayer(): any[] {
+    this.checkForId();
     const window = this.browserGlobals.windowRef();
     window.dataLayer = window.dataLayer || [];
     return window.dataLayer;
   }
 
   private pushOnDataLayer(obj: object): void {
+    this.checkForId();
     const dataLayer = this.getDataLayer();
     dataLayer.push(obj);
   }
@@ -69,6 +81,8 @@ export class GoogleTagManagerService {
     return new Promise((resolve, reject) => {
       if (this.isLoaded) {
         return resolve(this.isLoaded);
+      } else if( !this.checkForId() ) {
+        return resolve(false);
       }
       const doc = this.browserGlobals.documentRef();
       this.pushOnDataLayer({
@@ -99,6 +113,10 @@ export class GoogleTagManagerService {
 
   public pushTag(item: object): Promise<void> {
     return new Promise<void>((resolve, reject) => {
+      if( !this.checkForId() ) {
+        return resolve();
+      }
+
       if (!this.isLoaded) {
         this.addGtmToDom()
           .then(() => {
