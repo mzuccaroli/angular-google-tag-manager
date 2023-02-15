@@ -50,9 +50,6 @@ export class GoogleTagManagerService {
       gtm_resource_path:
         googleTagManagerResourcePath || this.config.gtm_resource_path,
     };
-    if (this.config.id == null) {
-      return;
-    }
   }
 
   private checkForId(): boolean {
