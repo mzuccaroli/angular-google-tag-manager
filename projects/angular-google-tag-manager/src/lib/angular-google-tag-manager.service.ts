@@ -1,6 +1,7 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID } from '@angular/core';
 import { GoogleTagManagerConfiguration } from './angular-google-tag-manager-config.service';
 import { GoogleTagManagerConfig } from './google-tag-manager-config';
+import { isPlatformBrowser } from "@angular/common";
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +12,10 @@ export class GoogleTagManagerService {
 
   private browserGlobals = {
     windowRef(): any {
-      return window;
+      return null;
     },
     documentRef(): any {
-      return document;
+      return null;
     },
   };
 
@@ -34,8 +35,21 @@ export class GoogleTagManagerService {
     public googleTagManagerResourcePath: string,
     @Optional()
     @Inject('googleTagManagerCSPNonce')
-    public googleTagManagerCSPNonce: string
+    public googleTagManagerCSPNonce: string,
+    @Inject(PLATFORM_ID)
+    private platformId: Object
   ) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.browserGlobals = {
+        windowRef(): any {
+          return window;
+        },
+        documentRef(): any {
+          return document;
+        },
+      };
+    }
+
     this.config = this.googleTagManagerConfiguration?.get();
     if (this.config == null) {
       this.config = { id: null };
@@ -55,7 +69,7 @@ export class GoogleTagManagerService {
   }
 
   public getDataLayer(): any[] {
-    const window = this.browserGlobals.windowRef();
+    const window = this.browserGlobals.windowRef() ?? {dataLayer: []};
     window.dataLayer = window.dataLayer || [];
     return window.dataLayer;
   }
@@ -71,6 +85,11 @@ export class GoogleTagManagerService {
         return resolve(this.isLoaded);
       }
       const doc = this.browserGlobals.documentRef();
+
+      if (doc === null) {
+        return resolve(true);
+      }
+
       this.pushOnDataLayer({
         'gtm.start': new Date().getTime(),
         event: 'gtm.js',
