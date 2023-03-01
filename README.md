@@ -107,7 +107,8 @@ You can pass _gtm_preview_ and _gtm_auth_ optional variables to your GTM by prov
         {provide: 'googleTagManagerAuth',  useValue: YOUR_GTM_AUTH},
         {provide: 'googleTagManagerPreview',  useValue: YOUR_GTM_ENV},
         {provide: 'googleTagManagerResourcePath',  useValue: YOUR_GTM_RESOURCE_PATH},
-        {provide: 'googleTagManagerCSPNonce',  useValue: YOUR_CSP_NONCE}
+        {provide: 'googleTagManagerCSPNonce',  useValue: YOUR_CSP_NONCE},
+        {provide: 'googleTagManagerMode', useValue: "silent" | "noisy"}
     ],
 ```
 
