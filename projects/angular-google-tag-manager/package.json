@@ -21,10 +21,10 @@
     "Brandon Largeau <https://github.com/Yberion>"
   ],
   "peerDependencies": {
-    "@angular/common": "^15.0.0",
-    "@angular/compiler": "^15.0.0"
+    "@angular/common": "^16.0.0",
+    "@angular/compiler": "^16.0.0"
   },
   "dependencies": {
-    "tslib": "^2.4.1"
+    "tslib": "^2.5.0"
   }
 }
