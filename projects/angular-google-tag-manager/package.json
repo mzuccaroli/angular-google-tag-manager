@@ -1,6 +1,6 @@
 {
   "name": "angular-google-tag-manager",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -18,7 +18,8 @@
     "Stefano Cestari <https://github.com/stefanocestari>",
     "LE LAY Olivier <https://github.com/liollury>",
     "Antoine Bursaux <https://github.com/bursauxa>",
-    "Brandon Largeau <https://github.com/Yberion>"
+    "Brandon Largeau <https://github.com/Yberion>",
+    "Perry M <https://github.com/pm20390>"
   ],
   "peerDependencies": {
     "@angular/common": "^16.0.0",
