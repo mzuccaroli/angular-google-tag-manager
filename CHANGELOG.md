@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [1.8.0] - 2023-05-23
+### Added
+- Angular 16 support
+
+## [1.7.1] - 2023-02-20
+
+### Added
+- Silent mode
+### Changed
+- Lib bump
 
 ## [1.7.0] - 2022-11-09
 
