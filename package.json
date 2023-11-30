@@ -1,6 +1,6 @@
 {
   "name": "angular-google-tag-manager",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -19,7 +19,9 @@
     "LE LAY Olivier <https://github.com/liollury>",
     "Antoine Bursaux <https://github.com/bursauxa>",
     "Brandon Largeau <https://github.com/Yberion>",
-    "Perry M <https://github.com/pm20390>"
+    "Perry M <https://github.com/pm20390>",
+    "Guillaume Masson <https://github.com/MassonGuillaume>",
+    "henriqueformiga <https://github.com/henriqueformiga>"
   ],
   "scripts": {
     "ng": "ng",
@@ -59,8 +61,8 @@
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage-istanbul-reporter": "~3.0.3",
     "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.0.0",
-    "ng-packagr": "~16.0.1",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "~17.0.2",
     "protractor": "~7.0.0",
     "ts-node": "~10.9.1",
     "typescript": "~5.2.2"
