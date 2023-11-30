@@ -30,23 +30,21 @@ describe('GoogleTagManagerService', () => {
     }));
 
   it('should init the GTM dataLayer on first push item',
-    inject([GoogleTagManagerService], (service: GoogleTagManagerService) => {
-      return service.pushTag(testObject).then(() => {
-        expect(window.dataLayer[0].event).toEqual('gtm.js');
-        // expect(window['dataLayer'][1]).toEqual(testobject);
-      });
+    inject([GoogleTagManagerService], async (service: GoogleTagManagerService) => {
+      await service.pushTag(testObject);
+      expect(window.dataLayer[0].event).toEqual('gtm.js');
     }));
 
   it('should be push objects in the dataLayer',
-    inject([GoogleTagManagerService], (service: GoogleTagManagerService) => {
-      return service.pushTag(testObject).then(() => {
-        expect(window.dataLayer[1]).toEqual(testObject);
-        expect(window.dataLayer[2]).toBeFalsy();
-        // we know it is loaded so no need to call .then on pushTag here
-        service.pushTag(testObject);
-        expect(window.dataLayer[1]).toEqual(testObject);
-        expect(window.dataLayer[3]).toEqual(testObject);
-      });
+    inject([GoogleTagManagerService], async (service: GoogleTagManagerService) => {
+      await service.pushTag(testObject);
+      expect(window.dataLayer[1]).toEqual(testObject);
+      expect(window.dataLayer[2]).toBeFalsy();
+      // we know it is loaded so no need to call .then on pushTag here
+      await service.pushTag(testObject);
+      expect(window.dataLayer[1]).toEqual(testObject);
+      expect(window.dataLayer[2]).toEqual(testObject);
+      expect(window.dataLayer[3]).toBeFalsy();
     }));
 
   it('should be able to initialize the dom with an iframe and a script element',
@@ -62,10 +60,9 @@ describe('GoogleTagManagerService', () => {
     }));
 
   it('should be able to initialize the dataLayer with some defaults values of a page',
-    inject([GoogleTagManagerService], (service: GoogleTagManagerService) => {
-      return service.pushTag(testObject).then(() => {
-        expect(window.dataLayer[0]['gtm.start']).toBeTruthy();
-        expect(window.dataLayer[0].event).toEqual('gtm.js');
-      });
+    inject([GoogleTagManagerService], async (service: GoogleTagManagerService) => {
+      await service.pushTag(testObject);
+      expect(window.dataLayer[0]['gtm.start']).toBeTruthy();
+      expect(window.dataLayer[0].event).toEqual('gtm.js');
     }));
 });
