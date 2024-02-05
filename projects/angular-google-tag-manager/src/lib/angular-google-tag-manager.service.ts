@@ -136,9 +136,10 @@ export class GoogleTagManagerService {
       url += '?';
     }
 
+    const keysToInclude = this.config.gtm_resource_path ? Object.keys(this.config).filter((k) => k !== 'gtm_resource_path') : Object.keys(this.config);
     return (
       url +
-      Object.keys(this.config)
+      keysToInclude
         .filter((k) => this.config[k])
         .map((k) => `${k}=${this.config[k]}`)
         .join('&')
