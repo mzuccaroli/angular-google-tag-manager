@@ -34,7 +34,8 @@ const routes: Routes = [
     })
   ],
   providers: [
-    { provide: 'googleTagManagerCSPNonce', useValue: 'CSP-NONCE' },
+    // You can provide the nonce automically by providing the value through Angular. See: https://angular.io/guide/security#content-security-policy
+    // { provide: 'googleTagManagerCSPNonce', useValue: 'CSP-NONCE' },
     // OLD PROVIDER VERSION
     // { provide: 'googleTagManagerId', useValue: 'GTM-PV8586C' }
   ],
