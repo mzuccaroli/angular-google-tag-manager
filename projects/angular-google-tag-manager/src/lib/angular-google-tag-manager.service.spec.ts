@@ -1,5 +1,4 @@
-import {inject, TestBed, waitForAsync} from '@angular/core/testing';
-
+import { inject, TestBed, waitForAsync } from '@angular/core/testing';
 import { GoogleTagManagerService } from './angular-google-tag-manager.service';
 
 describe('GoogleTagManagerService', () => {
@@ -48,15 +47,14 @@ describe('GoogleTagManagerService', () => {
     }));
 
   it('should be able to initialize the dom with an iframe and a script element',
-    inject([GoogleTagManagerService], (service: GoogleTagManagerService) => {
-      service.pushTag(testObject).then(() => {
+    inject([GoogleTagManagerService], async (service: GoogleTagManagerService) => {
+      await service.pushTag(testObject);
         // const iframe = document.querySelector('body > noscript > iframe');
         // expect(iframe).toBeTruthy();
         // expect(iframe.getAttribute('src')).toContain('https://www.googletagmanager.com/ns.html?id=');
         const script = document.querySelector('#GTMscript');
         expect(script).toBeTruthy();
         expect(script.getAttribute('src')).toContain('https://www.googletagmanager.com/gtm.js?id=');
-      });
     }));
 
   it('should be able to initialize the dataLayer with some defaults values of a page',
