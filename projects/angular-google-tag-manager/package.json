@@ -24,8 +24,8 @@
     "henriqueformiga <https://github.com/henriqueformiga>"
   ],
   "peerDependencies": {
-    "@angular/common": "^17.0.3",
-    "@angular/compiler": "^17.0.3"
+    "@angular/common": "^18.0.0",
+    "@angular/compiler": "^18.0.0"
   },
   "dependencies": {
     "tslib": "^2.5.0"
