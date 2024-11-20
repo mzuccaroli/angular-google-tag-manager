@@ -1,24 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import {
+  NavigationEnd,
+  Router,
+  RouterLink,
+  RouterOutlet,
+} from '@angular/router';
 import { GoogleTagManagerService } from 'angular-google-tag-manager';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [RouterOutlet, RouterLink],
 })
 export class AppComponent implements OnInit {
   constructor(
     private router: Router,
-    private gtmService: GoogleTagManagerService,
-  ) {
-  }
+    private gtmService: GoogleTagManagerService
+  ) {}
 
   title = 'angular-google-tag-manager demo application';
 
   customEvent() {
-
     // push GTM data layer with a custom event
     const gtmTag = {
       event: 'button-click',
@@ -31,11 +34,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // push GTM data layer for every visited page
-    this.router.events.forEach(item => {
+    this.router.events.forEach((item) => {
       if (item instanceof NavigationEnd) {
         const gtmTag = {
           event: 'page',
-          pageName: item.url
+          pageName: item.url,
         };
 
         this.gtmService.pushTag(gtmTag);
