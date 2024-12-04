@@ -92,11 +92,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "demo-application:build"
+            "buildTarget": "demo-application:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "demo-application:build:production"
+              "buildTarget": "demo-application:build:production"
             }
           }
         },
