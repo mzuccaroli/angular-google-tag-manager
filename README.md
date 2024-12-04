@@ -28,6 +28,26 @@ imports: [
 ]
 ```
 
+Or use the standalone based provider
+
+```
+import { provideGoogleTagManager } from 'angular-google-tag-manager';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    ...
+    provideGoogleTagManager({
+      id: 'YOUR_GTM_ID',
+      gtm_csp_none: 'CSP-NONCE',
+      // gtm_auth: YOUR_GTM_AUTH,
+      // gtm_preview: YOUR_GTM_RESOURCE_PATH
+      // gtm_resource_path:
+      // gtm_mode: "silent" | "noisy"
+    }),
+  ],
+};
+```
+
 Or use the `APP_INITIALIZER`
 
 ```
