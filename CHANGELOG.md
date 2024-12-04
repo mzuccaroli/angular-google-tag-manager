@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] - 2024-12-04
+- Update to Angular 19
+- migrate to the new build system
+- Moved the demo app to fully standalone
+- Add a provider method in the lib
+- Removed protractor
+- Fix a test with expectation never reached
+- upgrade @types/jasmine to fit jasmine-core version
+
 ## [1.10.0] - 2024-08-11
 ### Added
 - Angular 18 support
