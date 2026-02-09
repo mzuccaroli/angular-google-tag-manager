@@ -118,7 +118,8 @@ npm i --save  angular-google-tag-manager
 
 ### Custom configuration and GTM environments
 
-You can pass _gtm_preview_ and _gtm_auth_ optional variables to your GTM by providing them in app.module.ts
+You can provide the nonce through the Angular [`CSP_NONCE`](https://angular.io/guide/security#content-security-policy) token or by providing the `googleTagManagerCSPNonce` token.
+You can pass _gtm_preview_ and _gtm_auth_ optional variables to your GTM by providing them in app.module.ts.
 
 ```
     providers: [
