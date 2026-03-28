@@ -1,4 +1,4 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { CSP_NONCE, Inject, Injectable, Optional, inject } from '@angular/core';
 import { GoogleTagManagerConfiguration } from './angular-google-tag-manager-config.service';
 import { GoogleTagManagerConfig } from './google-tag-manager-config';
 
@@ -37,6 +37,10 @@ export class GoogleTagManagerService {
     @Inject('googleTagManagerCSPNonce')
     public googleTagManagerCSPNonce: string
   ) {
+    const ngCspNonce = inject(CSP_NONCE);
+    if (!googleTagManagerCSPNonce && ngCspNonce){
+      this.googleTagManagerCSPNonce = ngCspNonce;
+    }
     this.config = this.googleTagManagerConfiguration?.get();
     if (this.config == null) {
       this.config = { id: null };

@@ -19,7 +19,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideGoogleTagManager({
       id: 'GTM-PV8586C',
-      gtm_csp_none: 'CSP-NONCE',
+      // You can provide the nonce automically by providing the value through Angular. See: https://angular.io/guide/security#content-security-policy
+      // gtm_csp_none: 'CSP-NONCE',
       // gtm_auth: YOUR_GTM_AUTH,
       // gtm_preview: YOUR_GTM_ENV
     }),
